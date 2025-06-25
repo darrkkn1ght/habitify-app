@@ -3,88 +3,41 @@
     "name": "Habitify",
     "slug": "habitify-app",
     "version": "1.0.0",
+    "sdkVersion": "53.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/logo.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#3498DB"
+      "backgroundColor": "#6366f1"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.habitify.app",
-      "buildNumber": "1.0.0",
-      "infoPlist": {
-        "NSUserNotificationsUsageDescription": "This app uses notifications to remind you about your daily habits.",
-        "NSCameraUsageDescription": "This app uses the camera to take photos for your profile.",
-        "NSPhotoLibraryUsageDescription": "This app accesses your photo library to select profile pictures."
-      }
+      "bundleIdentifier": "com.yourname.habitify",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#3498DB"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#6366f1"
       },
-      "package": "com.habitify.app",
-      "versionCode": 1,
-      "permissions": [
-        "NOTIFICATIONS",
-        "CAMERA",
-        "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE"
-      ]
+      "package": "com.yourname.habitify",
+      "versionCode": 1
     },
     "web": {
-      "favicon": "./assets/images/favicon.png",
+      "favicon": "./assets/favicon.png",
       "name": "Habitify - Build Better Habits",
       "shortName": "Habitify",
       "lang": "en",
       "scope": "/",
-      "themeColor": "#3498DB",
+      "themeColor": "#6366f1",
       "backgroundColor": "#FFFFFF",
       "display": "standalone",
       "orientation": "portrait-primary"
-    },
-    "plugins": [
-      [
-        "expo-notifications",
-        {
-          "icon": "./assets/images/notification-icon.png",
-          "color": "#3498DB",
-          "defaultChannel": "default"
-        }
-      ],
-      [
-        "expo-font",
-        {
-          "fonts": [
-            "./assets/fonts/"
-          ]
-        }
-      ]
-    ],
-    "notification": {
-      "icon": "./assets/images/notification-icon.png",
-      "color": "#3498DB",
-      "androidMode": "default",
-      "androidCollapsedTitle": "Daily Habit Reminder"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0,
-      "url": "https://u.expo.dev/your-project-id"
-    },
-    "runtimeVersion": {
-      "policy": "sdkVersion"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "your-project-id-here"
-      }
-    },
-    "owner": "your-expo-username"
+    }
   }
 }
