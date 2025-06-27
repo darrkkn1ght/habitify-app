@@ -14,7 +14,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { HabitsContext } from '../../context/HabitsContext';
+import HabitsContext from '../../context/HabitsContext';
 import HabitCard from '../../components/HabitCard';
 import ProgressBar from '../../components/ProgressBar';
 import CustomButton from '../../components/CustomButton';
@@ -262,7 +262,7 @@ const HomeScreen = ({ navigation }) => {
           </Text>
           <CustomButton
             title="Create Your First Habit"
-            onPress={() => navigation.navigate('CreateHabit')}
+            onPress={() => navigation.navigate('HabitsTab', { screen: 'CreateHabit' })}
             style={styles.createButton}
             textStyle={styles.createButtonText}
           />

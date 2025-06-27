@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Import Context
-import { HabitsContext } from '../context/HabitsContext';
+import HabitsContext from '../context/HabitsContext';
 
 // Import Screens (will be created in later phases)
 // For now, we'll create placeholder components
@@ -54,19 +54,18 @@ const OnboardingScreen = ({ navigation }) => {
 
 // Temporary Sign In Screen placeholder
 const SignInScreen = ({ navigation }) => {
-  const { setUser } = useContext(HabitsContext);
+  const { signIn } = useContext(HabitsContext);
 
-  const handleSignIn = () => {
+  const handleSignIn = async () => {
     // Simulate authentication - replace with real auth logic
-    const mockUser = {
-      id: '1',
-      name: 'Demo User',
+    const credentials = {
       email: 'demo@habitify.com',
-      joinedDate: new Date().toISOString(),
+      name: 'Demo User',
     };
-    
-    setUser(mockUser);
-    Alert.alert('Success', 'Welcome to Habitify!');
+    const success = await signIn(credentials);
+    if (success) {
+      Alert.alert('Success', 'Welcome to Habitify!');
+    }
   };
 
   const handleSignUp = () => {
@@ -108,19 +107,18 @@ const SignInScreen = ({ navigation }) => {
 
 // Temporary Sign Up Screen placeholder
 const SignUpScreen = ({ navigation }) => {
-  const { setUser } = useContext(HabitsContext);
+  const { signUp } = useContext(HabitsContext);
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     // Simulate registration - replace with real auth logic
-    const mockUser = {
-      id: '2',
+    const userData = {
       name: 'New User',
       email: 'newuser@habitify.com',
-      joinedDate: new Date().toISOString(),
     };
-    
-    setUser(mockUser);
-    Alert.alert('Success', 'Account created successfully!');
+    const success = await signUp(userData);
+    if (success) {
+      Alert.alert('Success', 'Account created successfully!');
+    }
   };
 
   const handleSignIn = () => {

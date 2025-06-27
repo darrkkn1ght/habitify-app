@@ -247,19 +247,18 @@ export const HabitsProvider = ({ children }) => {
       
       if (data) {
         dispatch({ type: HABITS_ACTIONS.LOAD_HABITS, payload: data });
-        
         // Calculate today's completed habits
         const today = new Date().toDateString();
         const completedToday = data.habits?.filter(habit => 
           habit.completionHistory?.includes(today)
         ).length || 0;
-        
-        dispatch({ type: HABITS_ACTIONS.SET_LOADING, payload: false });
       }
       
       if (userData) {
         dispatch({ type: HABITS_ACTIONS.SET_USER, payload: userData });
       }
+      // Always set loading to false after attempting to load, even if no data
+      dispatch({ type: HABITS_ACTIONS.SET_LOADING, payload: false });
     } catch (error) {
       dispatch({ type: HABITS_ACTIONS.SET_ERROR, payload: 'Failed to load habits' });
     }
@@ -439,6 +438,14 @@ export const HabitsProvider = ({ children }) => {
     };
   };
 
+  // --- STUBS for HomeScreen compatibility ---
+  const getTodaysHabits = () => state.habits;
+  const getStreakCount = () => 0;
+  const getCompletionRate = () => 0;
+  const completeHabit = async () => {};
+  const undoHabitCompletion = async () => {};
+  const refreshData = async () => {};
+
   // Context value
   const value = {
     // State
@@ -459,6 +466,13 @@ export const HabitsProvider = ({ children }) => {
     clearError,
     getStatistics,
     
+    // HomeScreen required functions
+    getTodaysHabits,
+    getStreakCount,
+    getCompletionRate,
+    completeHabit,
+    undoHabitCompletion,
+    refreshData,
     // Computed values
     statistics: getStatistics(),
   };

@@ -4,46 +4,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import { View, Text, StyleSheet } from 'react-native';
 
-// Import Screens (placeholders for now, will be replaced in later phases)
-const HomeScreen = () => (
-  <View style={styles.placeholder}>
-    <Ionicons name="home" size={60} color="#6366f1" />
-    <Text style={styles.placeholderText}>Home Screen</Text>
-    <Text style={styles.placeholderSubtext}>Today's habits dashboard - Coming in Phase 6</Text>
-  </View>
-);
+// Import Screens
+import HomeScreen from '../screens/home/HomeScreen';
 
-const AllHabitsScreen = () => (
-  <View style={styles.placeholder}>
-    <Ionicons name="list" size={60} color="#6366f1" />
-    <Text style={styles.placeholderText}>All Habits Screen</Text>
-    <Text style={styles.placeholderSubtext}>Complete habits list - Coming in Phase 6</Text>
-  </View>
-);
+import AllHabitsScreen from '../screens/habits/AllHabitsScreen';
+import CreateHabitScreen from '../screens/habits/CreateHabitScreen';
+import HabitDetailScreen from '../screens/habits/HabitDetailScreen';
+import SettingsScreen from '../screens/settings/SettingsScreen';
 
-const CreateHabitScreen = () => (
-  <View style={styles.placeholder}>
-    <Ionicons name="add-circle" size={60} color="#6366f1" />
-    <Text style={styles.placeholderText}>Create Habit Screen</Text>
-    <Text style={styles.placeholderSubtext}>Add new habits - Coming in Phase 7</Text>
-  </View>
-);
-
-const HabitDetailScreen = () => (
-  <View style={styles.placeholder}>
-    <Ionicons name="analytics" size={60} color="#6366f1" />
-    <Text style={styles.placeholderText}>Habit Detail Screen</Text>
-    <Text style={styles.placeholderSubtext}>Individual habit analytics - Coming in Phase 7</Text>
-  </View>
-);
-
-const SettingsScreen = () => (
-  <View style={styles.placeholder}>
-    <Ionicons name="settings" size={60} color="#6366f1" />
-    <Text style={styles.placeholderText}>Settings Screen</Text>
-    <Text style={styles.placeholderSubtext}>App preferences - Coming in Phase 8</Text>
-  </View>
-);
+console.log('HomeScreen import:', HomeScreen);
+console.log('AllHabitsScreen import:', AllHabitsScreen);
+console.log('CreateHabitScreen import:', CreateHabitScreen);
+console.log('HabitDetailScreen import:', HabitDetailScreen);
+console.log('SettingsScreen import:', SettingsScreen);
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -120,8 +93,7 @@ const HabitsStack = () => {
         name="CreateHabit" 
         component={CreateHabitScreen}
         options={{
-          title: "Create New Habit",
-          presentation: 'modal',
+          title: "Create New Habit"
         }}
       />
       <Stack.Screen 
@@ -212,7 +184,7 @@ const MainTabs = () => {
     >
       <Tab.Screen 
         name="HomeTab" 
-        component={HomeStack}
+        component={HomeScreen}
         options={{
           title: 'Today',
           tabBarBadge: null, // Can be used for unread notifications

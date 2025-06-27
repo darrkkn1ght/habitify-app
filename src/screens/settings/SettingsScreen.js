@@ -13,7 +13,7 @@ import {
   Share,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { HabitsContext } from '../../context/HabitsContext';
+import HabitsContext from '../../context/HabitsContext';
 import CustomButton from '../../components/CustomButton';
 
 const { width } = Dimensions.get('window');

@@ -7,10 +7,11 @@ import {
   TouchableOpacity,
   Alert,
   Platform,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { HabitsContext } from '../../context/HabitsContext';
+import HabitsContext from '../../context/HabitsContext';
 import CustomButton from '../../components/CustomButton';
 import InputField from '../../components/InputField';
 
@@ -148,14 +149,19 @@ const CreateHabitScreen = ({ navigation }) => {
         <View style={styles.headerSpacer} />
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        <ScrollView style={styles.content} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
         {/* Habit Name */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Habit Name</Text>
+          {console.log('RENDER: formData.title =', formData.title, 'formData.description =', formData.description)}
           <InputField
             placeholder="Enter habit name (e.g., Drink 8 glasses of water)"
             value={formData.title}
-            onChangeText={(text) => updateFormData('title', text)}
+            onChangeText={(text) => { console.log('onChangeText:', text); updateFormData('title', text); }}
             error={errors.title}
             maxLength={50}
           />
@@ -320,6 +326,7 @@ const CreateHabitScreen = ({ navigation }) => {
           />
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
@@ -353,7 +360,6 @@ const styles = StyleSheet.create({
     width: 34,
   },
   content: {
-    flex: 1,
     padding: 20,
   },
   section: {

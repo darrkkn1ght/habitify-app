@@ -16,7 +16,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { HabitsContext } from '../../context/HabitsContext';
+import HabitsContext from '../../context/HabitsContext';
 import HabitCard from '../../components/HabitCard';
 import CustomButton from '../../components/CustomButton';
 import Header from '../../components/Header';

@@ -5,7 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Import Context
-import { HabitsContext } from '../context/HabitsContext';
+
+import HabitsContext from '../context/HabitsContext';
 
 // Import Navigation Stacks
 import AuthStack from './AuthStack';
@@ -31,15 +32,19 @@ const AppNavigator = () => {
 
   useEffect(() => {
     AsyncStorage.getItem('hasLaunched').then(value => {
+      console.log('AsyncStorage hasLaunched value:', value);
       if (value == null) {
         AsyncStorage.setItem('hasLaunched', 'true');
         setIsFirstLaunch(true);
+        console.log('First launch detected, setting isFirstLaunch to true');
       } else {
         setIsFirstLaunch(false);
+        console.log('Not first launch, setting isFirstLaunch to false');
       }
     });
   }, []);
 
+  console.log('AppNavigator render: loading =', loading, ', isFirstLaunch =', isFirstLaunch);
   // Show loading screen while checking auth state and first launch
   if (loading || isFirstLaunch === null) {
     return <LoadingScreen />;
